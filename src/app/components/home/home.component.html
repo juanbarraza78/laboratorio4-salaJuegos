@@ -1,0 +1,38 @@
+<div class="boddy">
+  <div class="slider">
+    <!-- list Items -->
+    <div class="list">
+      <div class="item active">
+        <img [src]="getCurrentSlideUrl()" />
+        <div class="content">
+          <p>design</p>
+          <h2>{{ getCurrentSlideTitle() }}</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+            neque? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Ipsum, ex.
+          </p>
+          @if(this.authService.currentUserSig()){
+          <a (click)="jugarAhora()" class="login-button">Jugar Ahora</a>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- button arrows -->
+    <div class="arrows">
+      <button (click)="goToPrevious()" id="prev"><</button>
+      <button (click)="goToNext()" id="next">></button>
+    </div>
+
+    <!-- thumbnail -->
+    <div class="thumbnail">
+      @for (slide of slides; track slide.url;) {
+      <div class="item active" (click)="goToSlide(slide.id - 1)">
+        <img src="{{ slide.url }}" />
+        <div class="content">{{ slide.title }}</div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

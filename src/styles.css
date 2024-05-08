@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@import "ngx-toastr/toastr";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:600");
+@import url("https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap");
+
+body {
+  margin: 0;
+  background-color: #010101;
+  color: #eee;
+  min-height: 100vh;
+}

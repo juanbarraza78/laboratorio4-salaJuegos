@@ -1,0 +1,84 @@
+.cardContainer {
+  width: 300px;
+  height: 500px;
+  position: fixed;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  z-index: 12;
+  /* display: none; */
+}
+
+.card-header {
+  background-color: #009970;
+  color: white;
+  font-weight: 700;
+}
+
+.card-body {
+  padding: 0.5rem;
+  overflow: scroll;
+}
+
+.card-body::-webkit-scrollbar {
+  display: none;
+}
+
+.imgSend {
+  width: 30px;
+  height: 30px;
+}
+.imgSend:active {
+  transform: scale(0.9);
+}
+
+.enviado {
+  padding: 0.5rem;
+  display: block;
+  float: right;
+  background-color: teal;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 80%;
+}
+
+p span {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.699);
+}
+
+.recibido {
+  padding: 0.5rem;
+  display: block;
+  float: left;
+  background-color: gray;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 80%;
+}
+
+.imgClose {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.imgClose:active {
+  transform: scale(0.9);
+}
+
+.iconoChat {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 12;
+}
+.iconoChat:active {
+  transform: scale(0.9);
+}

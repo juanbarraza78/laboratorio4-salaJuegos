@@ -1,0 +1,54 @@
+@if(this.authService.currentUserSig() != null) { @if(this.estaActivo){
+<div class="card text-center cardContainer">
+  <div class="card-header">
+    CHAT
+    <img
+      class="imgClose"
+      src="../../../assets/img/cruz.svg"
+      alt=""
+      (click)="cambiarEstado()"
+    />
+  </div>
+  <div class="card-body">
+    <div data-bs-spy="scroll" class="contenedorMensajes">
+      <p
+        *ngFor="let message of messages"
+        [ngClass]="
+          this.authService.currentUserSig()?.username === message.userName
+            ? 'enviado'
+            : 'recibido'
+        "
+      >
+        {{ message.text }}
+        <span> {{ message.date }} </span>
+      </p>
+    </div>
+  </div>
+  <div class="card-footer text-body-secondary contenedorFooter">
+    <form [formGroup]="form" (ngSubmit)="enviarMensaje()">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ingrese su mensaje"
+          formControlName="mensaje"
+        />
+        <button class="input-group-text" id="basic-addon2">
+          <img
+            src="../../../assets/img/telegram.svg"
+            class="imgSend icon-telegram"
+            alt="Send"
+          />
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+} @else {
+<img
+  class="iconoChat"
+  src="../../../assets/img/telegram.svg"
+  alt=""
+  (click)="cambiarEstado()"
+/>
+} }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "saladejuegos-7fac5": {
+      "hosting": {
+        "salajuegos": [
+          "saladejuegos-7fac5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "saladejuegos-7fac5"
+  }
+}

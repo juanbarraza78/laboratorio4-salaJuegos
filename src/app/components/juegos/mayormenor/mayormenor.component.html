@@ -1,0 +1,58 @@
+<div class="min-100vh d-flex justify-content-center align-items-center">
+  <div class="container text-center">
+    <h1 class="titulo">Mayor o Menor</h1>
+    <div class="deck mt-5">
+      <div class="card {{ cartaSiguiente?.nombre }} {{ cartaSiguiente?.palo }}">
+        <span class="numeroCarta">
+          {{ cartaSiguiente?.numero }}{{ cartaSiguiente?.palo }}
+        </span>
+        <span *ngFor="let number of cartaSiguiente?.contenido" class="item">{{
+          cartaSiguiente?.palo
+        }}</span>
+        <span class="numeroCartaReverso">
+          {{ cartaSiguiente?.numero }}{{ cartaSiguiente?.palo }}
+        </span>
+      </div>
+      <div
+        class="card {{ cartaSiguiente?.nombre }} {{
+          cartaSiguiente?.palo
+        }} flipped"
+      >
+        <span class="numeroCarta">
+          {{ cartaSiguiente?.numero }}{{ cartaSiguiente?.palo }}
+        </span>
+        <span *ngFor="let number of cartaSiguiente?.contenido" class="item">{{
+          cartaSiguiente?.palo
+        }}</span>
+        <span class="numeroCartaReverso">
+          {{ cartaSiguiente?.numero }}{{ cartaSiguiente?.palo }}
+        </span>
+      </div>
+    </div>
+    <div class="score-container">
+      <div>Puntuacion: {{ puntaje }}</div>
+    </div>
+    <div class="botones-container">
+      <h2>¿La siguiente carta será mayor, menor o igual?</h2>
+      <div>
+        <button class="btn btn-warning" (click)="verificarAdivinanza('MAYOR')">
+          Mayor
+        </button>
+        <button class="btn btn-warning" (click)="verificarAdivinanza('IGUAL')">
+          Igual
+        </button>
+        <button class="btn btn-warning" (click)="verificarAdivinanza('MENOR')">
+          Menor
+        </button>
+      </div>
+    </div>
+    <div *ngIf="resultado !== ''">
+      <h2 *ngIf="resultado === 'Incorrecto'" style="color: #fe655c">
+        Resultado: {{ resultado }}
+      </h2>
+      <h2 *ngIf="resultado === 'Correcto'" style="color: green">
+        Resultado: {{ resultado }}
+      </h2>
+    </div>
+  </div>
+</div>
