@@ -1,0 +1,121 @@
+<div class="d-flex justify-content-center align-items-center min-100vh">
+  <div class="bg-white p-5 rounded-5 text-secondary shadow containerBackground">
+    <div class="text-center fs-1 fw-bold">Encuesta</div>
+    <!-- Form -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="input-group mt-4">
+        <div class="input-group-text colorMain">
+          <img
+            src="/assets/username-icon.svg"
+            alt="username-icon"
+            style="height: 1rem"
+          />
+        </div>
+        <input
+          formControlName="nombre"
+          class="form-control bg-light"
+          type="text"
+          placeholder="Nombre"
+          required
+        />
+        <input
+          formControlName="apellido"
+          class="form-control bg-light"
+          type="text"
+          placeholder="Apellido"
+          required
+        />
+      </div>
+      <div class="input-group mt-1">
+        <div class="input-group-text colorMain">
+          <img
+            src="/assets/password-icon.svg"
+            alt="password-icon"
+            style="height: 1rem"
+          />
+        </div>
+        <input
+          formControlName="edad"
+          class="form-control bg-light"
+          type="number"
+          placeholder="Edad"
+          required
+        />
+      </div>
+      <div class="input-group mt-1">
+        <div class="input-group-text colorMain">
+          <img
+            src="/assets/password-icon.svg"
+            alt="password-icon"
+            style="height: 1rem"
+          />
+        </div>
+        <input
+          formControlName="numeroTelefono"
+          class="form-control bg-light"
+          type="number"
+          placeholder="Numero de telefono"
+          required
+        />
+      </div>
+      <label class="form-label mt-4">Que juego te parecio el mejor?</label>
+      <select
+        formControlName="juego"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option value="1">Ahorcado</option>
+        <option value="2">Preguntados</option>
+        <option value="3">Mayor o Menor</option>
+        <option value="4">Snake</option>
+      </select>
+      <label class="form-label mt-4">Que tanto te gusto esta pagina?</label>
+      <input
+        formControlName="puntuacion"
+        type="range"
+        class="form-range"
+        min="1"
+        max="10"
+        id="customRange2"
+      />
+      <div class="form-check mt-4">
+        <input
+          class="form-check-input colorVerde"
+          formControlName="condiciones"
+          type="checkbox"
+        />
+        <label class="form-check-label"> Acepto terminos y condiciones </label>
+      </div>
+      <!-- Boton -->
+      <button
+        type="submit"
+        class="btn colorMain text-white w-100 mt-4 fw-semibold shadow-sm"
+      >
+        Enviar encuesta
+      </button>
+    </form>
+    <div class="d-flex gap-1 justify-content-center mt-1">
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div class="toast-header">
+            <img src="..." class="rounded me-2" alt="..." />
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 /* Globales de la pag */
 .min-100vh {
   min-height: 100vh;
-  background-image: url("../../../../assets/mayormenor/background-inca.png");
+  background-image: url("../../../../assets/masMenos.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -254,6 +254,23 @@
 }
 
 .botones-container div button:active {
+  transform: scale(0.9);
+}
+
+.guardarPuntaje {
+  position: absolute;
+  margin: 10px;
+  background-color: #009970;
+  color: white;
+  border: 3px solid #064131;
+  border-radius: 10px;
+  width: 150px;
+  height: 70px;
+  right: 0;
+  top: 100px;
+  z-index: 111;
+}
+.guardarPuntaje:active {
   transform: scale(0.9);
 }
 

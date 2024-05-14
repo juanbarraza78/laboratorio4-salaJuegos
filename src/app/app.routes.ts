@@ -14,6 +14,20 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'puntajes',
+    loadComponent: () =>
+      import('./components/lista-puntajes/lista-puntajes.component').then(
+        (m) => m.ListaPuntajesComponent
+      ),
+  },
+  {
+    path: 'encuesta',
+    loadComponent: () =>
+      import('./components/encuesta/encuesta.component').then(
+        (m) => m.EncuestaComponent
+      ),
+  },
+  {
     path: 'login',
     loadComponent: () =>
       import('./components/login/login.component').then(
@@ -39,6 +53,20 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/juegos/mayormenor/mayormenor.component').then(
         (m) => m.MayormenorComponent
+      ),
+  },
+  {
+    path: 'preguntados',
+    loadComponent: () =>
+      import('./components/juegos/preguntados/preguntados.component').then(
+        (m) => m.PreguntadosComponent
+      ),
+  },
+  {
+    path: 'mijuego',
+    loadComponent: () =>
+      import('./components/juegos/mijuego/mijuego.component').then(
+        (m) => m.MijuegoComponent
       ),
   },
   {

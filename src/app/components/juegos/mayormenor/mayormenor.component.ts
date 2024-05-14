@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { resultadosInterface } from '../../../interface/resultados.interface';
+import { ResultadosPuntajeService } from '../../../services/resultados-puntaje.service';
+import { FirebaseAuthService } from '../../../services/firebase-auth.service';
 
 interface Carta {
   numero: number;
@@ -21,12 +24,15 @@ export class MayormenorComponent {
   cartaSiguiente?: Carta;
   resultado?: string;
   puntaje: number = 0;
+  intentos: number = 3;
   constructor() {}
+
+  putajes = inject(ResultadosPuntajeService);
+  authService = inject(FirebaseAuthService);
 
   ngOnInit(): void {
     this.crearMazo();
     this.iniciarJuego();
-    console.log(this.mazo);
   }
 
   crearMazo() {
@@ -88,6 +94,27 @@ export class MayormenorComponent {
       this.puntaje++;
     } else {
       this.resultado = 'Incorrecto';
+      this.intentos--;
     }
+    if (this.intentos == 0) {
+      this.puntaje = 0;
+      this.intentos = 3;
+    }
+  }
+
+  guardarPuntaje() {
+    let fecha = new Date();
+    const resultadoAux: resultadosInterface = {
+      puntaje: this.puntaje,
+      userName: this.authService.currentUserSig()?.email,
+      date: `${fecha.toLocaleDateString('es-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      })} - ${fecha.toLocaleTimeString()}`,
+      dateOrder: fecha,
+      juego: 'Mayor o menor',
+    };
+    this.putajes.saveAll(resultadoAux);
   }
 }

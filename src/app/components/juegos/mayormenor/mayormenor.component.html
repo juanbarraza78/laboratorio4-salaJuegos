@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="score-container">
-      <div>Puntuacion: {{ puntaje }}</div>
+      <div>Puntuacion: {{ puntaje }} - Intentos: {{ intentos }}</div>
     </div>
     <div class="botones-container">
       <h2>¿La siguiente carta será mayor, menor o igual?</h2>
@@ -53,6 +53,9 @@
       <h2 *ngIf="resultado === 'Correcto'" style="color: green">
         Resultado: {{ resultado }}
       </h2>
+      <button class="guardarPuntaje" (click)="guardarPuntaje()">
+        Guardar puntaje
+      </button>
     </div>
   </div>
 </div>

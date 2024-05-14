@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { PuntajesService } from '../../../services/puntajes.service';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
+import { ResultadosPuntajeService } from '../../../services/resultados-puntaje.service';
+import { resultadosInterface } from '../../../interface/resultados.interface';
+import { FirebaseAuthService } from '../../../services/firebase-auth.service';
 
 @Component({
   selector: 'app-ahorcado',
@@ -108,8 +110,27 @@ export class AhorcadoComponent {
     return this.palabras[indiceAleatorio];
   }
 
-  constructor(private router: Router, private puntajeService: PuntajesService) {
+  constructor(private router: Router) {
     this.palabraOculta = '_ '.repeat(this.palabra.length);
+  }
+
+  putajes = inject(ResultadosPuntajeService);
+  authService = inject(FirebaseAuthService);
+
+  guardarPuntaje() {
+    let fecha = new Date();
+    const resultadoAux: resultadosInterface = {
+      puntaje: this.puntaje,
+      userName: this.authService.currentUserSig()?.email,
+      date: `${fecha.toLocaleDateString('es-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      })} - ${fecha.toLocaleTimeString()}`,
+      dateOrder: fecha,
+      juego: 'Ahorcado',
+    };
+    this.putajes.saveAll(resultadoAux);
   }
 
   comprobar(letra: any) {
@@ -136,12 +157,14 @@ export class AhorcadoComponent {
 
     if (palabraEvaluar === this.palabra) {
       this.gano = true;
+      this.puntaje = this.palabra.length + 7 - this.intentos;
       Swal.fire({
         icon: 'success',
         title: 'Felicidades! Ganaste!!! 😁',
-        text: 'Cantidad de puntos ganados: ' + this.palabra.length,
+        text: 'Cantidad de puntos ganados: ' + this.puntaje,
+      }).then(() => {
+        this.guardarPuntaje();
       });
-      this.puntaje += this.palabra.length;
     }
     if (this.intentos === 7) {
       this.perdio = true;
@@ -160,16 +183,7 @@ export class AhorcadoComponent {
     }
   }
 
-  async guardarPuntaje() {
-    this.puntaje = await this.puntajeService.guardarPuntaje(
-      this.puntaje,
-      this.title
-    );
-  }
-
   empezarNuevoJuego() {
-    this.router
-      .navigateByUrl('/ahorcado', { skipLocationChange: true })
-      .then(() => this.router.navigate(['juegos/ahorcado']));
+    window.location.reload();
   }
 }

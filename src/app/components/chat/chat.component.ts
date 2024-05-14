@@ -10,6 +10,7 @@ import { FirebaseChatService } from '../../services/firebase-chat.service';
 import { messageInterface } from '../../interface/message.interface';
 import { CommonModule, NgFor } from '@angular/common';
 import { FirebaseAuthService } from '../../services/firebase-auth.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
@@ -29,16 +30,15 @@ export class ChatComponent {
     this.estaActivo = !this.estaActivo;
   }
 
-  messages?: messageInterface[] = [
-    {
-      text: 'hola',
-      userName: 'Jota',
-      date: new Date().toDateString(),
-    },
-  ];
+  messages?: messageInterface[] = [];
 
   ngOnInit() {
     this.chat.getAll().subscribe((messages) => {
+      messages.sort((a, b) => {
+        const timestampA = a.dateOrder.seconds * 1000 + a.dateOrder.nanoseconds / 1000000;
+        const timestampB = b.dateOrder.seconds * 1000 + b.dateOrder.nanoseconds / 1000000;
+        return timestampA - timestampB;
+      });
       this.messages = messages;
     });
   }
@@ -60,6 +60,7 @@ export class ChatComponent {
         month: '2-digit',
         year: 'numeric',
       })} - ${fecha.toLocaleTimeString()}`,
+      dateOrder: fecha,
     };
 
     this.chat.saveAll(message);

@@ -21,10 +21,30 @@ export class HomeComponent {
   router = inject(Router);
 
   slides = [
-    { id: 1, url: '../../../assets/ahorcado.png', title: 'Ahorcado' },
-    { id: 2, url: '../../../assets/preguntados.png', title: 'Preguntados' },
-    { id: 3, url: '../../../assets/masMenos.png', title: 'Mas o Menos' },
-    { id: 4, url: '../../../assets/puzzle.png', title: 'Puzzle' },
+    {
+      id: 1,
+      url: '../../../assets/ahorcado.png',
+      title: 'Ahorcado',
+      des: 'juego en el que debes adivinar una palabra oculta letra por letra antes de que se complete un dibujo del ahorcado. Cada letra incorrecta añade una parte al dibujo, acercándote al fallo. Es un desafío de palabras divertido y clásico que pone a prueba tu habilidad para adivinar.',
+    },
+    {
+      id: 2,
+      url: '../../../assets/preguntados.png',
+      title: 'Preguntados',
+      des: 'juego de preguntas y respuestas donde compites para avanzar en un tablero respondiendo preguntas de diferentes categorías. Es divertido y desafiante para poner a prueba tu conocimiento.',
+    },
+    {
+      id: 3,
+      url: '../../../assets/masMenos.png',
+      title: 'Mas o Menos',
+      des: 'juego de cartas donde los jugadores adivinan si la siguiente carta será de mayor o menor valor que la actual. Su simplicidad lo hace ideal para pasar el tiempo de forma divertida y rápida.',
+    },
+    {
+      id: 4,
+      url: '../../../assets/puzzle.png',
+      title: 'Snake',
+      des: 'juego clásico donde controlas una serpiente que crece a medida que consume alimentos en pantalla. Debes evitar chocar contra las paredes o tu propia cola para continuar. Es adictivo y simple de jugar, perfecto para pasar el tiempo.',
+    },
   ];
 
   currentIndex: number = 0;
@@ -76,11 +96,19 @@ export class HomeComponent {
     return `${this.slides[this.currentIndex].title}`;
   }
 
+  getCurrentSlideDes() {
+    return `${this.slides[this.currentIndex].des}`;
+  }
+
   jugarAhora() {
     if (this.currentIndex == 0) {
       this.router.navigateByUrl('/ahorcado');
+    } else if (this.currentIndex == 1) {
+      this.router.navigateByUrl('/preguntados');
     } else if (this.currentIndex == 2) {
       this.router.navigateByUrl('/mayormenor');
+    } else if (this.currentIndex == 3) {
+      this.router.navigateByUrl('/mijuego');
     }
   }
 }

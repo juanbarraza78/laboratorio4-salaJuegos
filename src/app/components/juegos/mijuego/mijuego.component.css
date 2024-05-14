@@ -1,0 +1,62 @@
+.min-100vh {
+  min-height: 100vh;
+  background-image: url("../../../../assets/puzzle.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.min-100vh::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: linear-gradient(to top, #000 0%, transparent);
+  background-size: cover;
+}
+
+/* Contenido */
+.container {
+  z-index: 1;
+  position: relative;
+  padding-top: 150px;
+}
+
+.containerMain {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+}
+
+#board {
+  border: 1px solid #999;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+}
+
+.score span {
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+  color: #000;
+}
+
+.score h1 {
+  font-size: 30px;
+  font-weight: 600;
+  color: f3f3f3;
+}
+
+.score {
+  text-align: center;
+  margin-bottom: 1rem;
+}

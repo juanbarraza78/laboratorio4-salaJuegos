@@ -1,0 +1,26 @@
+<div class="min-100vh">
+  <div class="container">
+    <ul data-bs-spy="scroll">
+      @for (resultado of resultados; track resultado.id){
+      <li>
+        <div class="contenidoPosicion">
+          <span class="number">{{
+            obtenerIndicePorId(resultados, resultado.id)
+          }}</span>
+        </div>
+        <div class="contenidoNombres">
+          <span class="name">{{ resultado.userName }}</span>
+          <span class="fecha">{{ resultado.date }}</span>
+          <span class="name">{{ resultado.juego }}</span>
+        </div>
+        <div class="contenidoPuntaje">
+          <span class="points">{{ resultado.puntaje }}</span>
+          <span class="badge"
+            ><img src="../../../assets/estrella-del-trofeo.svg" alt="" />
+          </span>
+        </div>
+      </li>
+      }
+    </ul>
+  </div>
+</div>

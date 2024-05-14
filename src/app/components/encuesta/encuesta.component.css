@@ -1,5 +1,6 @@
 .containerBackground {
   margin-top: 180px;
+  width: 60%;
 }
 .min-100vh {
   min-height: 100vh;
@@ -16,4 +17,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.colorVerde {
+  background-color: #009970;
 }

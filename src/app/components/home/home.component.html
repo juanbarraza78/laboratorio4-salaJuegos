@@ -5,12 +5,10 @@
       <div class="item active">
         <img [src]="getCurrentSlideUrl()" />
         <div class="content">
-          <p>design</p>
+          <p>Juan</p>
           <h2>{{ getCurrentSlideTitle() }}</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-            neque? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Ipsum, ex.
+            {{ getCurrentSlideDes() }}
           </p>
           @if(this.authService.currentUserSig()){
           <a (click)="jugarAhora()" class="login-button">Jugar Ahora</a>
